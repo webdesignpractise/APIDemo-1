@@ -8,21 +8,10 @@ app = Flask(__name__)
 def gather():
     data = request.get_json() # fetch the payload and 
     output = None
-    name = data['name']         # desearlize it and capture the data into identifiers
-    print(name)
-    age = data['age']
-    print(age)
-    ra_no = data['random_number']
-    print(ra_no)
-    output =int(age) + int(ra_no)
-    print(output)
-    return(jsonify({"output": output}))
-
-@app.route('/details', methods=['GET'])
-def fetch():
-
-    details = [1,2,43]
-    return(jsonify({"output":details}))
+    height = data['height']         # desearlize it and capture the data into identifiers
+    weight = data['weight']
+    output = weight/pow(height,2)
+    return(jsonify({"BMI": output}))
 
 if __name__ == '__main__':
     app.run(port=5000,debug=True)
